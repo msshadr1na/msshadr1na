@@ -1,16 +1,69 @@
-## Hi 
-😇😇😇
-<!--
-**msshadr1na/msshadr1na** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# Решение задачи (Вариант 6)
 
-Here are some ideas to get you started:
+## Исходная матрица
+|   | 1  | 2  | 3  | 4  | 5  |
+|---|----|----|----|----|----|
+| A | 7  | 11 | 9  | 11 | 14 |
+| B | 5  | 13 | 16 | 20 | 17 |
+| C | 19 | 10 | 9  | 10 | 7  |
+| D | 13 | 5  | 5  | 5  | 18 |
+| E | 12 | 20 | 20 | 13 | 7  |
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+## Шаг 1: Вычитание минимального элемента строк
+Минимальные элементы строк:  
+- A: 7 
+- B: 5
+- C: 7 
+- D: 5
+- E: 7 
+
+**Результат:**
+|   | 1  | 2  | 3  | 4  | 5  |
+|---|----|----|----|----|----|
+| A | 0  | 4  | 2  | 4  | 7  |
+| B | 0  | 8  | 11 | 15 | 12 |
+| C | 12 | 3  | 2  | 3  | 0  |
+| D | 8  | 0  | 0  | 0  | 13 |
+| E | 5  | 13 | 13 | 6  | 0  |
+
+```mermaid
+graph LR
+    subgraph "Доля 1"
+        A((A))
+        B((B))
+        C((C))
+        D((D))
+        E((E))
+    end
+    subgraph "Доля 2"
+        1((1))
+        2((2))
+        3((3))
+        4((4))
+        5((5))
+    end
+    A --- 1
+    B --- 1
+    C --- 5
+    D --- 2
+    D --- 3
+    D --- 4
+    E --- 5
+```
+
+```mermaid
+graph LR
+    subgraph "1 фронт"
+        C((C))
+    end
+    subgraph "2 фронт"
+        5((5))
+    end
+    subgraph "3 фронт"
+        E((E))
+    end
+    C -.- 5
+    5 === E
+```
